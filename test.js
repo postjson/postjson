@@ -126,6 +126,7 @@ ctrl.mapSeries([
         // throw new TypeError('err:awesome')
         return function inTheDeep (comment, done) {
           // throw new TypeError('err:inTheDeep')
+          console.log('app:', app) // => { foo: 'app', four: 'four', six: 'six', qux: 'qux' }
           comment.deep = true
           done(null, comment)
         }
@@ -143,5 +144,6 @@ ctrl.mapSeries([
   // => `e` is always null on `.map/.mapSeries`
   // => `results` is [1, 2, 3]
   console.log('end:', results)
-  console.log(ctx)
+  console.log(ctx) // => { foo: 'app' }, totally expected
 })
+
