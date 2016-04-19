@@ -24,6 +24,7 @@ require = utils // eslint-disable-line no-undef, no-native-reassign
  * Lazily required module dependencies
  */
 
+require('clone-deep')
 require('extend-shallow', 'extend')
 require('for-own')
 require('kind-of')

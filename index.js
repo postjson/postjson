@@ -21,6 +21,10 @@ function PostJSON (plugins, options) {
   if (!(this instanceof PostJSON)) {
     return new PostJSON(plugins, options)
   }
+  if (utils.kindOf(plugins) === 'object') {
+    options = plugins
+    plugins = []
+  }
   this.options = utils.extend({
     parser: utils.postjsonParser,
     render: utils.postjsonRender
@@ -60,7 +64,7 @@ PostJSON.prototype.parse = function parse (val, options) {
 
   this.options = options ? utils.extend(this.options, options) : this.options
   this.value = typeof val === 'string' ? JSON.parse(val) : val
-  this.tree = this.options.parser(this.value, this.options)
+  this.tree = this.options.parser(utils.cloneDeep(this.value), this, this.options)
   return this
 }
 
@@ -78,7 +82,7 @@ PostJSON.prototype.parse = function parse (val, options) {
 PostJSON.prototype.render = function render (tree, options) {
   this.tree = typeof tree === 'object' && arguments.length > 1 ? tree : this.tree
   this.options = options ? utils.extend(this.options, options) : this.options
-  this.json = this.options.render(this.tree, this.options)
+  this.json = this.options.render(this.tree, this, this.options)
   return this
 }
 
