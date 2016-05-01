@@ -32,6 +32,7 @@ function PostJSON (plugins, options) {
 /**
  * > Add a `fn` as plugin.
  *
+ * @name   .use
  * @param  {Functio|Array} `fn`
  * @param  {Object}   `options`
  * @return {PostJSON} instance for chaining
@@ -106,13 +107,14 @@ PostJSON.prototype.process = function process (val, options) {
 }
 
 /**
- * > Temporary here. Part of future API sugars for working with AST.
+ * > Temporary here, could be plugin. Part of future API sugars for working with AST.
  *
  * @param  {Object|Array} `tree`
  * @param  {Function} `fn`
  * @return {PostJSON}
  * @api public
  */
+
 PostJSON.prototype.walk = function walk (tree, fn) {
   var self = this
   utils.arrayify(tree).forEach(function (node) {

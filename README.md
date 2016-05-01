@@ -25,7 +25,7 @@ const postjson = require('postjson')
 * `plugins` **{Array|Function}**    
 * `options` **{Object}**    
 
-### [.use](index.js#L40)
+### [.use](index.js#L42)
 
 > Add a `fn` as plugin.
 
@@ -35,7 +35,7 @@ const postjson = require('postjson')
 * `options` **{Object}**    
 * `returns` **{PostJSON}**: instance for chaining  
 
-### [.parse](index.js#L56)
+### [.parse](index.js#L52)
 
 > Parse a `str` to abstract syntax tree (AST) and writes
 it to `.tree` property of the `this` instance.
@@ -46,7 +46,7 @@ it to `.tree` property of the `this` instance.
 * `options` **{Object}**    
 * `returns` **{PostJSON}**: instance for chaining  
 
-### [.render](index.js#L78)
+### [.render](index.js#L74)
 
 > Render a given `tree`. Or you can just use it in combination
 with `.parse(str)` which writes the `tree` to instance, then `.render`
@@ -58,7 +58,7 @@ will use it. If only one argument is passed it is assumed as `options`.
 * `options` **{Object}**    
 * `returns` **{PostJSON}**: instance for chaining  
 
-### [.toString](index.js#L93)
+### [.toString](index.js#L89)
 
 > Returns stringified and already modified JSON.
 
@@ -67,7 +67,7 @@ will use it. If only one argument is passed it is assumed as `options`.
 * `indent` **{Object}**    
 * `returns` **{String}**  
 
-### [.process](index.js#L107)
+### [.process](index.js#L103)
 
 > Transforms a `val` using previously passed plugins. Think for it
 like `.parse` plus `.render` combination.
@@ -78,9 +78,9 @@ like `.parse` plus `.render` combination.
 * `options` **{Object}**    
 * `returns` **{PostJSON}**  
 
-### [.walk](index.js#L126)
+### [.walk](index.js#L118)
 
-> Temporary here. Part of future API sugars for working with AST.
+> Temporary here, could be plugin. Part of future API sugars for working with AST.
 
 **Params**
 
@@ -100,6 +100,7 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [for-own]: https://github.com/jonschlinkert/for-own
 [kind-of]: https://github.com/jonschlinkert/kind-of
 [lazy-cache]: https://github.com/jonschlinkert/lazy-cache
+[use-ware]: https://github.com/tunnckocore/use-ware
 
 [npmjs-url]: https://www.npmjs.com/package/postjson
 [npmjs-img]: https://img.shields.io/npm/v/postjson.svg?label=postjson
