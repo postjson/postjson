@@ -21,12 +21,17 @@ function PostJSON (plugins, options) {
   if (!(this instanceof PostJSON)) {
     return new PostJSON(plugins, options)
   }
+  utils.use(this, {
+    fn: function (app, options) {
+      this.options = utils.extend(this.options, options)
+    }
+  })
+
   this.options = utils.extend({
     parser: utils.postjsonParser,
     render: utils.postjsonRender
   }, options || this.options)
   this.plugins = utils.arrayify(plugins)
-  utils.use(this)
 }
 
 /**
