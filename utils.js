@@ -27,6 +27,7 @@ require = utils // eslint-disable-line no-undef, no-native-reassign
 require('extend-shallow', 'extend')
 require('for-own')
 require('kind-of')
+require('use-ware', 'use')
 
 /**
  * Restore `require`

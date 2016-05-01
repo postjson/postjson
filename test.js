@@ -12,10 +12,13 @@
 var postjson = require('./index')
 
 postjson
-  .use(function (app, tree) {
-    app.walk(tree, function (node) {
-      if (node.key === 'license') node.value = 'Apache2'
-    })
+  .use(function (app) {
+    return function (tree) {
+      // `this.walk` or `app.walk`, both work
+      app.walk(tree, function (node) {
+        if (node.key === 'license') node.value = 'Apache2'
+      })
+    }
   })
 
 var app = postjson.process(require('./package.json'))

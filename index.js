@@ -26,6 +26,7 @@ function PostJSON (plugins, options) {
     render: utils.postjsonRender
   }, options || this.options)
   this.plugins = utils.arrayify(plugins)
+  utils.use(this)
 }
 
 /**
@@ -36,12 +37,6 @@ function PostJSON (plugins, options) {
  * @return {PostJSON} instance for chaining
  * @api public
  */
-
-PostJSON.prototype.use = function use (fn, options) {
-  this.options = options ? utils.extend(this.options, options) : this.options
-  this.plugins = this.plugins.concat(utils.arrayify(fn))
-  return this
-}
 
 /**
  * > Parse a `str` to abstract syntax tree (AST) and writes
@@ -105,12 +100,8 @@ PostJSON.prototype.toString = function toString (indent) {
  */
 
 PostJSON.prototype.process = function process (val, options) {
-  var self = this
   this.parse(val, options)
-  this.plugins.forEach(function (plugin) {
-    var res = plugin.call(self, self, self.tree, self.options)
-    self.tree = res || self.tree
-  })
+  this.run(this.tree)
   return this.render(this.tree, this.options)
 }
 
