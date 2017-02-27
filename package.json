@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "extend-shallow": "^2.0.1",
-    "for-own": "^0.1.4",
+    "for-own": "^1.0.0",
     "kind-of": "^3.0.2",
     "lazy-cache": "^2.0.0",
     "use-ware": "^0.3.0"
